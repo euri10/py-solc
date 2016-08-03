@@ -110,7 +110,7 @@ def compile_source(source, output_values=ALL_OUTPUT_VALUES, **kwargs):
     return contracts
 
 
-def compile_files(source_files, output_values=ALL_OUTPUT_VALUES, **kwargs):
+def compile_files(source_files, output_values=None, **kwargs):
     if 'source_files' in kwargs:
         raise ValueError(
             "The `source_files` keyword is not allowed in the `compile_files` function"
@@ -119,6 +119,16 @@ def compile_files(source_files, output_values=ALL_OUTPUT_VALUES, **kwargs):
         raise ValueError(
             "The `combined_json` keyword is not allowed in the `compile_files` function"
         )
+    ol = ALL_OUTPUT_VALUES
+
+    if 'removeflag'  in kwargs:
+        print('ere')
+        ol.remove(kwargs['removeflag'])
+        output_values = ol
+        kwargs.pop('removeflag')
+    else:
+        print('toto')
+        output_values = ol
 
     combined_json = ','.join(output_values)
 
