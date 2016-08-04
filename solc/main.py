@@ -123,7 +123,6 @@ def compile_files(source_files, output_values=None, **kwargs):
         if kwargs['removeflag'] is not None:
             ol.remove(kwargs['removeflag'])
         kwargs.pop('removeflag')
-    
     output_values = ol
     combined_json = ','.join(output_values)
 
