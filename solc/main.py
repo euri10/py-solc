@@ -117,19 +117,12 @@ def compile_files(source_files, output_values=None, **kwargs):
         )
     if 'combined_json' in kwargs:
         raise ValueError(
-            "The `combined_json` keyword is not allowed in the `compile_files` function"
-        )
+            "The `combined_json` keyword is not allowed in the `compile_files` function")
     ol = ALL_OUTPUT_VALUES
-
-    if 'removeflag'  in kwargs:
-        print('ere')
+    if 'removeflag' in kwargs:
         ol.remove(kwargs['removeflag'])
-        output_values = ol
         kwargs.pop('removeflag')
-    else:
-        print('toto')
-        output_values = ol
-
+    output_values = ol
     combined_json = ','.join(output_values)
 
     stdoutdata, stderrdata = solc_wrapper(
