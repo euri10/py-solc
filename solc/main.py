@@ -119,9 +119,11 @@ def compile_files(source_files, output_values=None, **kwargs):
         raise ValueError(
             "The `combined_json` keyword is not allowed in the `compile_files` function")
     ol = ALL_OUTPUT_VALUES
-    if 'removeflag' in kwargs and kwargs['removeflag'] is not None:
-        ol.remove(kwargs['removeflag'])
-    kwargs.pop('removeflag')
+    if 'removeflag' in kwargs:
+        if kwargs['removeflag'] is not None:
+            ol.remove(kwargs['removeflag'])
+        kwargs.pop('removeflag')
+    
     output_values = ol
     combined_json = ','.join(output_values)
 
